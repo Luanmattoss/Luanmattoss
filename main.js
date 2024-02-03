@@ -1,5 +1,5 @@
 const characters = [
-    { id: 2, name: 'Shanks', category: 'UR', abilities: ['Double Slash', 'Gryphon', 'Heaven Splitter', 'Haoshoku Haki'], effects: [] },
+    { id: 2, name: 'Shanks', category: 'UR', abilities: ['Double Slash', 'Gryphon', 'Heaven Splitter', 'Haoshoku Haki'], effects: [], image: 'https://i.imgur.com/ex4pLpA.png' },
     // Adicione mais personagens conforme necessário
 ];
 
@@ -13,7 +13,7 @@ function displayCharacters() {
         const card = document.createElement('div');
         card.classList.add('character-card');
         card.innerHTML = `
-            <img src="https://i.imgur.com/ex4pLpA.png" alt="${character.name}">
+            <img src="${character.image}" alt="${character.name}">
             <h3>${character.name}</h3>
             <p>Categoria: ${character.category}</p>
             <ul class="ability-list">
@@ -38,9 +38,30 @@ function displayTeam() {
         const card = document.createElement('div');
         card.classList.add('character-card');
         card.innerHTML = `
-            <img src="https://i.imgur.com/ex4pLpA.png" alt="${character.name}">
+            <img src="${character.image}" alt="${character.name}">
             <h3>${character.name}</h3>
             <p>Categoria: ${character.category}</p>
             <ul class="ability-list">
                 ${character.abilities.map((ability, index) => `
-                    <li class
+                    <li class="ability-list-item">
+                        <img src="path/to/ability_icons/${index + 1}.png" alt="${ability}">
+                        <p><strong>${ability}</strong></p>
+                        <p>Efeito: ${character.effects[index]}</p>
+                    </li>
+                `).join('')}
+            </ul>
+        `;
+        teamDiv.appendChild(card);
+    });
+}
+
+function addCharacterToTeam() {
+    // Adicione a lógica para adicionar personagens à equipe
+}
+
+function clearTeam() {
+    // Adicione a lógica para limpar a equipe
+}
+
+displayCharacters();
+displayTeam();
