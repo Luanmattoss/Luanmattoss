@@ -1,5 +1,5 @@
 const characters = [
-    { id: 2, name: 'Shanks', category: 'UR', abilities: ['Double Slash', 'Gryphon', 'Heaven Splitter', 'Haoshoku Haki'], effects: [], image: 'https://i.imgur.com/ex4pLpA.png' },
+    { id: 1, name: 'Shanks', category: 'UR', image: 'https://i.imgur.com/ex4pLpA.png', abilities: ['Double Slash', 'Gryphon', 'Heaven Splitter', 'Haoshoku Haki'], effects: [] },
     // Adicione mais personagens conforme necessário
 ];
 
@@ -12,6 +12,7 @@ function displayCharacters() {
     characters.forEach(character => {
         const card = document.createElement('div');
         card.classList.add('character-card');
+        card.onclick = () => addCharacterToTeam(character);
         card.innerHTML = `
             <img src="${character.image}" alt="${character.name}">
             <h3>${character.name}</h3>
@@ -55,13 +56,19 @@ function displayTeam() {
     });
 }
 
-function addCharacterToTeam() {
-    // Adicione a lógica para adicionar personagens à equipe
+function addCharacterToTeam(selectedCharacter) {
+    if (team.length < 5) {
+        team.push(selectedCharacter);
+        displayTeam();
+    } else {
+        alert('Sua equipe já está completa (limite de 5 personagens).');
+    }
 }
 
 function clearTeam() {
-    // Adicione a lógica para limpar a equipe
+    team = [];
+    displayTeam();
 }
 
+// Exibir personagens ao carregar a página
 displayCharacters();
-displayTeam();
